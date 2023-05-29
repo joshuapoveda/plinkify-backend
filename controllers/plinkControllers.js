@@ -3,13 +3,8 @@ const mongoose = require("mongoose");
 
 //get all plinks
 const getAllPlinks = async (req, res) => {
-  try {
     const allPlinks = await Plink.find({}).sort({ createdAt: -1 });
     res.status(200).json(allPlinks);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("An error occurred while fetching data");
-  }
 };
 
 //get single plink
