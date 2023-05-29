@@ -1,14 +1,17 @@
 const express = require("express");
-const Plink = require("../models/plinkModel");
+
+const {
+  createPlink,
+  getAllPlinks,
+  getSinglePlink,
+} = require("../controllers/plinkControllers");
 
 const router = express.Router();
 
 //Index New Delete Update Create Edit Show
 
 //get all plinks
-router.get("/", (req, res) => {
-  res.json({ message: "GET ALL PLINKS" });
-});
+router.get("/", getAllPlinks);
 
 //DELETE a plink
 router.delete("/:id", (req, res) => {
@@ -16,19 +19,7 @@ router.delete("/:id", (req, res) => {
 });
 
 //POST a new plink
-router.post("/", async (req, res) => {
-  const { title, description, url1 } = req.body;
-  try {
-    const plink = await Plink.create({
-      title,
-      description,
-      url1,
-    });
-    res.status(200).json(plink);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});
+router.post("/", createPlink);
 
 //UPDATE a plink
 router.patch("/:id", (req, res) => {
@@ -36,8 +27,6 @@ router.patch("/:id", (req, res) => {
 });
 
 //get a single plink
-router.get("/:id", (req, res) => {
-  res.json({ message: "GET SINGLE PLINK" });
-});
+router.get("/:id", getSinglePlink);
 
 module.exports = router;
