@@ -36,6 +36,23 @@ const createPlink = async (req, res) => {
     url9,
     url10,
   } = req.body;
+
+  let emptyFields = []
+
+  if(!title) {
+    emptyFields.push('title')
+  }
+  if(!description) {
+    emptyFields.push('description')
+  }
+  if(!url1) {
+    emptyFields.push('url1')
+  }
+  
+  if(emptyFields.length > 0){
+    return res.status(400).json({error: 'Please fill in complete form.', emptyFields})
+  }
+
   //adding doc to db
   try {
     const plink = await Plink.create({
