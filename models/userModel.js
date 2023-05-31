@@ -19,6 +19,7 @@ const userSchema = new Schema({
 //static sign up method
 //must use regular function in order to use 'this' keyword
 userSchema.statics.signup = async function (email, password) {
+
   if (!email || !password) {
     throw Error("All fields must be filled");
   }
@@ -31,6 +32,7 @@ userSchema.statics.signup = async function (email, password) {
   }
 
   const exists = await this.findOne({ email });
+  
   if (exists) {
     throw Error("Email already being used");
   }
