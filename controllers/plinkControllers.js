@@ -3,8 +3,10 @@ const mongoose = require("mongoose");
 
 //get all plinks
 const getAllPlinks = async (req, res) => {
-    const allPlinks = await Plink.find({}).sort({ createdAt: -1 });
-    res.status(200).json(allPlinks);
+  const user_id = req.user._id;
+
+  const allPlinks = await Plink.find({ user_id }).sort({ createdAt: -1 });
+  res.status(200).json(allPlinks);
 };
 
 //get single plink
@@ -37,24 +39,27 @@ const createPlink = async (req, res) => {
     url10,
   } = req.body;
 
-  let emptyFields = []
+  let emptyFields = [];
 
-  if(!title) {
-    emptyFields.push('title')
+  if (!title) {
+    emptyFields.push("title");
   }
-  if(!description) {
-    emptyFields.push('description')
+  if (!description) {
+    emptyFields.push("description");
   }
-  if(!url1) {
-    emptyFields.push('url1')
+  if (!url1) {
+    emptyFields.push("url1");
   }
-  
-  if(emptyFields.length > 0){
-    return res.status(400).json({error: 'Please fill in complete form.', emptyFields})
+
+  if (emptyFields.length > 0) {
+    return res
+      .status(400)
+      .json({ error: "Please fill in complete form.", emptyFields });
   }
 
   //adding doc to db
   try {
+    const user_id = req.user._id;
     const plink = await Plink.create({
       title,
       description,
@@ -68,6 +73,7 @@ const createPlink = async (req, res) => {
       url8,
       url9,
       url10,
+      user_id,
     });
     res.status(200).json(plink);
   } catch (error) {

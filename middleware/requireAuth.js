@@ -14,7 +14,7 @@ const requireAuth = async (req, res, next) => {
   try {
     // destructuring id from payload sent from token
     const {_id} = jwt.verify(token, process.env.SECRET);
-
+    //sets user id in req body
     req.user = await User.findOne({_id}).select('_id')
     next()
 
