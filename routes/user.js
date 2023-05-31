@@ -6,7 +6,7 @@ const router = express.Router()
 const {signupUser, loginUser} = require('../controllers/userController')
 
 //login
-router.post('/login', loginUser)
+router.post('https://plinkify-frontend.onrender.com/login', loginUser)
 
 //signup
 
