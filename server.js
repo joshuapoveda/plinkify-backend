@@ -3,6 +3,7 @@ require('dotenv').config()
 const mongoose = require("mongoose")
 const express = require("express");
 const plinkRoutes = require('./routes/plinks')
+const userRoutes = require('./routes/user')
 
 //express app
 const app = express();
@@ -17,6 +18,7 @@ app.use((req,res, next) => {
 
 //routes
 app.use('/api/plinks',plinkRoutes)
+app.use('/api/user',userRoutes)
 
 // // DB connection
 mongoose.connect(process.env.MONGO_URI)
