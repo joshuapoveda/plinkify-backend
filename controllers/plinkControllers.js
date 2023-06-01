@@ -17,7 +17,7 @@ const getSinglePlink = async (req, res) => {
   }
   const plink = await Plink.findById(id);
   if (!plink) {
-    return res.status(400).json({ error: "Plink is not plinking :(" });
+    return res.status(400).json({ error: "Plink is not plinking" });
   }
   res.status(200).json(plink);
 };
@@ -89,7 +89,7 @@ const deletePlink = async (req, res) => {
   }
   const plink = await Plink.findOneAndDelete({ _id: id });
   if (!plink) {
-    return res.status(400).json({ error: "Plink is not plinking :(" });
+    return res.status(400).json({ error: "Plink is not plinking" });
   }
   res.status(200).json(plink);
 };
@@ -102,7 +102,7 @@ const updatePlink = async (req, res) => {
   }
   const plink = await Plink.findOneAndUpdate({ _id: id }, { ...req.body });
   if (!plink) {
-    return res.status(400).json({ error: "Plink is not plinking :(" });
+    return res.status(400).json({ error: "Plink is not plinking" });
   }
   res.status(200).json(plink);
 };
