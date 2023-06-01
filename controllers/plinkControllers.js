@@ -50,6 +50,12 @@ const createPlink = async (req, res) => {
   if (!url1) {
     emptyFields.push("url1");
   }
+  if (!url2) {
+    emptyFields.push("url2");
+  }
+  if (!url3) {
+    emptyFields.push("url3");
+  }
 
   if (emptyFields.length > 0) {
     return res
