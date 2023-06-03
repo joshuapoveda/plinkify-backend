@@ -20,7 +20,7 @@ const userSchema = new Schema({
 //must use regular function in order to use 'this' keyword
 userSchema.statics.signup = async function (email, password) {
 
-  if (!email || !password) {
+  if (!email && !password) {
     throw Error("All fields must be filled");
   }
   if (!validator.isEmail(email)) {
@@ -66,5 +66,6 @@ userSchema.statics.login = async function (email, password) {
 
   return user;
 };
+
 
 module.exports = mongoose.model("user", userSchema);
