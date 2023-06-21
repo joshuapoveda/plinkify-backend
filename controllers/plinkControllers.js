@@ -37,7 +37,7 @@ const createPlink = async (req, res) => {
     url8,
     url9,
     url10,
-    public,
+    // public,
   } = req.body;
 
   let emptyFields = [];
@@ -81,7 +81,7 @@ const createPlink = async (req, res) => {
       url9,
       url10,
       user_id,
-      public
+      // public
     });
     res.status(200).json(plink);
   } catch (error) {
