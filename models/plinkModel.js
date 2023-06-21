@@ -16,7 +16,7 @@ const plinkSchema = new Schema(
     url8: { type: String, required: false },
     url9: { type: String, required: false },
     url10: { type: String, required: false },
-    user_id: { type: String, required: true },
+    public: { type: Boolean, default: false },
     public: false
   },
   { timestamps: true }
