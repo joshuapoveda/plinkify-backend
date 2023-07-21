@@ -32,11 +32,7 @@ const createPlink = async (req, res) => {
     url3,
     url4,
     url5,
-    url6,
-    url7,
-    url8,
-    url9,
-    url10,
+    public,
   } = req.body;
 
   let emptyFields = [];
@@ -54,6 +50,12 @@ const createPlink = async (req, res) => {
     emptyFields.push("url2");
   }
   if (!url3) {
+    emptyFields.push("url3");
+  }
+  if (!url4) {
+    emptyFields.push("url3");
+  }
+  if (!url5) {
     emptyFields.push("url3");
   }
 
@@ -74,11 +76,7 @@ const createPlink = async (req, res) => {
       url3,
       url4,
       url5,
-      url6,
-      url7,
-      url8,
-      url9,
-      url10,
+      public,
       user_id,
     });
     res.status(200).json(plink);
